@@ -1,1 +1,586 @@
-# -A-Gift-For-Luly-
+# -A-Gift-For-Luly- 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Gift for Layan 🎀✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            background-color: #fce4ec;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #4a4a4a;
+            overflow-x: hidden;
+            direction: ltr;
+        }
+        .container {
+            width: 100%;
+            max-width: 390px;
+            background: #fff0f3;
+            height: 100vh;
+            max-height: 844px;
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            position: relative;
+            border-radius: 35px;
+            overflow: hidden;
+            border: 4px solid #fff;
+        }
+        @media (max-width: 420px) {
+            .container {
+                border-radius: 0;
+                height: 100vh;
+                max-height: 100vh;
+                border: none;
+            }
+        }
+        .screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            flex-grow: 1;
+            text-align: center;
+            animation: fadeIn 0.35s ease-in-out;
+            width: 100%;
+            height: 100%;
+        }
+        .screen.active {
+            display: flex;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.97); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding-bottom: 5px;
+            font-size: 13px;
+            color: #d81b60;
+            font-weight: 600;
+        }
+        .title {
+            font-size: 24px;
+            color: #e91e63;
+            margin-bottom: 2px;
+            font-weight: 700;
+        }
+        .subtitle {
+            font-size: 13px;
+            color: #ad1457;
+            opacity: 0.75;
+            margin-bottom: 12px;
+        }
+        
+        /* Lock Screen Keypad */
+        .code-inputs {
+            display: flex;
+            gap: 12px;
+            margin: 15px 0;
+            justify-content: center;
+        }
+        .code-dot {
+            width: 45px;
+            height: 45px;
+            border: 2px solid #f48fb1;
+            border-radius: 15px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #e91e63;
+            font-weight: bold;
+            box-shadow: 0 2px 6px rgba(233,30,99,0.08);
+        }
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 100%;
+            max-width: 280px;
+            margin-bottom: 10px;
+        }
+        .key-btn {
+            background: #fff;
+            border: 1px solid #f8bbd0;
+            border-radius: 18px;
+            padding: 12px 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: #c2185b;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            transition: 0.15s;
+        }
+        .key-btn:active {
+            background: #fce4ec;
+            transform: scale(0.96);
+        }
+        .error-msg {
+            color: #e91e63;
+            font-size: 12px;
+            height: 18px;
+            font-weight: 600;
+        }
+
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            width: 100%;
+            margin: auto 0;
+        }
+        .menu-card {
+            background: #fff;
+            border: 2px solid #f8bbd0;
+            border-radius: 22px;
+            padding: 22px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(233, 30, 99, 0.06);
+            transition: all 0.2s;
+        }
+        .menu-card:active {
+            transform: scale(0.96);
+        }
+        .menu-icon {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+        .menu-text {
+            font-size: 13.5px;
+            color: #c2185b;
+            font-weight: 700;
+        }
+
+        /* Memory Cards */
+        .photos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .photo-card {
+            background: #fff;
+            padding: 8px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(233, 30, 99, 0.08);
+            text-align: left;
+            border: 1px solid #fce4ec;
+        }
+        .memory-img-container {
+            width: 100%;
+            height: 115px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .memory-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 4px 0 4px;
+        }
+        .card-footer span {
+            font-size: 12px;
+            color: #e91e63;
+            font-weight: 700;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding-top: 5px;
+        }
+        .return-btn {
+            background: #f8bbd0;
+            color: #880e4f;
+            border: none;
+            padding: 9px 28px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .return-btn:active {
+            transform: scale(0.95);
+        }
+        .music-btn {
+            width: 42px;
+            height: 42px;
+            background: #fff;
+            border: 1px solid #f8bbd0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .music-btn.playing {
+            animation: pulse 1.5s infinite;
+            background: #f8bbd0;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        .content-box {
+            background: #fff;
+            border-radius: 24px;
+            padding: 20px;
+            border: 2px solid #f8bbd0;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.05);
+            width: 100%;
+            margin: auto 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Screen 1: Lock Screen -->
+    <div id="lockScreen" class="screen active">
+        <div class="top-bar">
+            <span>A gift for Layan 🎀✨</span>
+            <span>12:11 PM</span>
+        </div>
+        
+        <div style="margin-top: 15px;">
+            <div style="font-size: 40px; margin-bottom: 5px;">🔒</div>
+            <div class="title">Enter Passcode</div>
+            <div class="subtitle">enter the secret code 🤍</div>
+        </div>
+
+        <div>
+            <div class="code-inputs">
+                <div class="code-dot" id="d1"></div>
+                <div class="code-dot" id="d2"></div>
+                <div class="code-dot" id="d3"></div>
+                <div class="code-dot" id="d4"></div>
+            </div>
+            <div class="error-msg" id="errorMsg"></div>
+        </div>
+
+        <div class="keypad">
+            <button class="key-btn" onclick="pressKey('1')">1</button>
+            <button class="key-btn" onclick="pressKey('2')">2</button>
+            <button class="key-btn" onclick="pressKey('3')">3</button>
+            <button class="key-btn" onclick="pressKey('4')">4</button>
+            <button class="key-btn" onclick="pressKey('5')">5</button>
+            <button class="key-btn" onclick="pressKey('6')">6</button>
+            <button class="key-btn" onclick="pressKey('7')">7</button>
+            <button class="key-btn" onclick="pressKey('8')">8</button>
+            <button class="key-btn" onclick="pressKey('9')">9</button>
+            <button class="key-btn" style="visibility: hidden;"></button>
+            <button class="key-btn" onclick="pressKey('0')">0</button>
+            <button class="key-btn" onclick="clearCode()" style="font-size: 14px;">✕</button>
+        </div>
+
+        <div class="bottom-nav">
+            <div style="width: 42px;"></div>
+            <div class="music-btn" id="musicBtn1" onclick="toggleMusic()">🎶</div>
+        </div>
+    </div>
+
+    <!-- Screen 2: Main Navigation Menu -->
+    <div id="menuScreen" class="screen">
+        <div class="top-bar">
+            <span>A gift for Layan 🎀✨</span>
+            <span>12:11 PM</span>
+        </div>
+        
+        <div style="margin-top: 10px;">
+            <div class="title">pick a gift</div>
+            <div class="subtitle">choose one to open ↓</div>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-card" onclick="showScreen('memoriesScreen')">
+                <div class="menu-icon">📸</div>
+                <div class="menu-text">our memories</div>
+            </div>
+            <div class="menu-card" onclick="showScreen('flowersScreen')">
+                <div class="menu-icon">🌷</div>
+                <div class="menu-text">Virtual Flowers</div>
+            </div>
+            <div class="menu-card" onclick="toggleMusic()">
+                <div class="menu-icon">🎧</div>
+                <div class="menu-text">Music Box</div>
+            </div>
+            <div class="menu-card" onclick="showScreen('letterScreen')">
+                <div class="menu-icon">💌</div>
+                <div class="menu-text">Birthday Letter</div>
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <div style="width: 42px;"></div>
+            <div class="music-btn" id="musicBtn2" onclick="toggleMusic()">🎶</div>
+        </div>
+    </div>
+
+    <!-- Screen 3: Memories Screen -->
+    <div id="memoriesScreen" class="screen">
+        <div class="top-bar">
+            <span>A gift for Layan 🎀✨</span>
+            <span>6:10 PM</span>
+        </div>
+        
+        <div>
+            <div style="font-size: 20px; color: #e91e63;">📷</div>
+            <div class="title" style="font-size: 20px;">our memories</div>
+        </div>
+
+        <div class="photos-grid">
+            <!-- Quote Banner -->
+            <div class="photo-card" style="grid-column: span 2;">
+                <div style="width: 100%; height: 110px; background: #0a0a0a; border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 15px; border: 1px solid #222; box-shadow: inset 0 0 15px rgba(0,0,0,0.8);">
+                    <p style="color: #ffffff; font-size: 16px; font-weight: 700; text-align: center; line-height: 1.6; letter-spacing: 0.5px;">
+                        حضرت جنابك ما بتخلي عندي صور 🖤
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <span>sweet memories</span>
+                    <span>🖤</span>
+                </div>
+            </div>
+
+            <!-- Card 1: Layan's Eyes -->
+            <div class="photo-card">
+                <div class="memory-img-container">
+                    <img src="https://i.postimg.cc/Z59GNbdf/IMG-7047.jpg" alt="always - eyes">
+                </div>
+                <div class="card-footer">
+                    <span>always</span>
+                    <span>❤️</span>
+                </div>
+            </div>
+
+            <!-- Card 2: Couple Silhouette Photo -->
+            <div class="photo-card">
+                <div class="memory-img-container">
+                    <img src="https://i.postimg.cc/43cRDf4C/IMG-7062.png" alt="favorite - couple">
+                </div>
+                <div class="card-footer">
+                    <span>favorite</span>
+                    <span>🤍</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <button class="return-btn" onclick="showScreen('menuScreen')">RETURN</button>
+            <div class="music-btn" id="musicBtn3" onclick="toggleMusic()">🎶</div>
+        </div>
+    </div>
+
+    <!-- Screen 4: Virtual Flowers (Lily Flower) -->
+    <div id="flowersScreen" class="screen">
+        <div class="top-bar">
+            <span>A gift for Layan 🎀✨</span>
+            <span>6:12 PM</span>
+        </div>
+        <div class="title">virtual flowers</div>
+
+        <div class="content-box">
+            <div style="margin-bottom: 12px; display: flex; justify-content: center;">
+                <svg width="150" height="150" viewBox="0 0 200 200" style="background: #fff; border-radius: 20px; padding: 10px; border: 2px solid #f8bbd0; box-shadow: 0 4px 12px rgba(233,30,99,0.1);">
+                    <g transform="translate(100,105)">
+                        <path d="M 0 0 C -40 -30 -60 -90 0 -95 C 60 -90 40 -30 0 0 Z" fill="#f8bbd0" stroke="#c2185b" stroke-width="2"/>
+                        <path d="M 0 0 C -80 -20 -95 30 -50 60 C -10 80 -10 30 0 0 Z" fill="#f48fb1" stroke="#c2185b" stroke-width="2"/>
+                        <path d="M 0 0 C 80 -20 95 30 50 60 C 10 80 10 30 0 0 Z" fill="#f48fb1" stroke="#c2185b" stroke-width="2"/>
+                        <path d="M 0 0 C -30 10 -40 70 0 85 C 40 70 30 10 0 0 Z" fill="#ffcdd2" stroke="#c2185b" stroke-width="2"/>
+                        <path d="M 0 0 C -70 -60 -20 -80 0 0 Z" fill="#f8bbd0" stroke="#c2185b" stroke-width="2"/>
+                        <path d="M 0 0 C 70 -60 20 -80 0 0 Z" fill="#f8bbd0" stroke="#c2185b" stroke-width="2"/>
+                        <path d="M 0 -10 L 0 -75" stroke="#ad1457" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M 0 -10 L -35 35" stroke="#ad1457" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M 0 -10 L 35 35" stroke="#ad1457" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M 0 0 Q -15 -40 -25 -55" fill="none" stroke="#880e4f" stroke-width="2.5"/>
+                        <ellipse cx="-25" cy="-57" rx="5" ry="3" fill="#4a148c" transform="rotate(-20 -25 -57)"/>
+                        <path d="M 0 0 Q 15 -40 25 -55" fill="none" stroke="#880e4f" stroke-width="2.5"/>
+                        <ellipse cx="25" cy="-57" rx="5" ry="3" fill="#4a148c" transform="rotate(20 25 -57)"/>
+                        <path d="M 0 0 Q -5 -45 -8 -65" fill="none" stroke="#880e4f" stroke-width="2.5"/>
+                        <ellipse cx="-8" cy="-67" rx="5" ry="3" fill="#4a148c"/>
+                        <path d="M 0 0 Q 5 -45 8 -65" fill="none" stroke="#880e4f" stroke-width="2.5"/>
+                        <ellipse cx="8" cy="-67" rx="5" ry="3" fill="#4a148c"/>
+                        <circle cx="0" cy="0" r="7" fill="#880e4f"/>
+                    </g>
+                </svg>
+            </div>
+            <div style="font-weight: 700; color: #c2185b; font-size: 16px; margin-bottom: 10px;">Pink & White Lilies 🤍</div>
+            <p style="font-size: 13px; color: #ad1457; line-height: 1.8; font-weight: 500;">
+                "Pure, elegant, and forever beautiful just like you 🤍"<br>
+                "The heart and warmth of my home ✨"<br>
+                "My greatest pride 🌸"
+            </p>
+        </div>
+
+        <div class="bottom-nav">
+            <button class="return-btn" onclick="showScreen('menuScreen')">RETURN</button>
+            <div class="music-btn" id="musicBtn4" onclick="toggleMusic()">🎶</div>
+        </div>
+    </div>
+
+    <!-- Screen 5: Love Letter -->
+    <div id="letterScreen" class="screen">
+        <div class="top-bar">
+            <span>A gift for Layan 🎀✨</span>
+            <span>6:10 PM</span>
+        </div>
+
+        <div class="content-box" style="text-align: left; max-height: 480px; overflow-y: auto;">
+            <div style="text-align: center; margin-bottom: 8px; display: flex; justify-content: center;">
+                <svg width="44" height="40" viewBox="0 0 100 90" fill="none">
+                    <ellipse cx="50" cy="50" rx="42" ry="32" fill="#FFFFFF" stroke="#333333" stroke-width="3.5"/>
+                    <path d="M 18 28 L 8 8 L 32 20 Z" fill="#FFFFFF" stroke="#333333" stroke-width="3.5" stroke-linejoin="round"/>
+                    <path d="M 82 28 L 92 8 L 68 20 Z" fill="#FFFFFF" stroke="#333333" stroke-width="3.5" stroke-linejoin="round"/>
+                    <ellipse cx="32" cy="48" rx="3.5" ry="5.5" fill="#333333"/>
+                    <ellipse cx="68" cy="48" rx="3.5" ry="5.5" fill="#333333"/>
+                    <ellipse cx="50" cy="54" rx="4.5" ry="3" fill="#FFD54F" stroke="#333333" stroke-width="2"/>
+                    <line x1="8" y1="46" x2="22" y2="48" stroke="#333333" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="6" y1="54" x2="21" y2="54" stroke="#333333" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="9" y1="62" x2="22" y2="60" stroke="#333333" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="92" y1="46" x2="78" y2="48" stroke="#333333" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="94" y1="54" x2="79" y2="54" stroke="#333333" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="91" y1="62" x2="78" y2="60" stroke="#333333" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="73" cy="22" r="6" fill="#FF69B4" stroke="#333333" stroke-width="2"/>
+                    <ellipse cx="62" cy="20" rx="7" ry="5" fill="#FF8DA1" stroke="#333333" stroke-width="2" transform="rotate(-15 62 20)"/>
+                    <ellipse cx="84" cy="24" rx="7" ry="5" fill="#FF8DA1" stroke="#333333" stroke-width="2" transform="rotate(15 84 24)"/>
+                </svg>
+            </div>
+            
+            <div style="text-align: center; font-size: 16px; font-weight: 700; color: #e91e63; margin-bottom: 15px;">
+                Happy Birthday, Luly! ✨🎂
+            </div>
+
+            <p style="font-size: 12.5px; line-height: 1.7; margin-bottom: 10px; color: #555; font-weight: 700;">To Luly,</p>
+            
+            <p style="font-size: 12.5px; line-height: 1.7; margin-bottom: 10px; color: #555;">Happy Birthday to the most beautiful girl the one who holds such a special place in my heart.</p>
+            
+            <p style="font-size: 12.5px; line-height: 1.7; margin-bottom: 10px; color: #555;">I hope your day is as beautiful as your eyes as sweet as your smile and as special as you are to me I wish you a wonderful year ahead filled with genuine happiness success good health endless love and all the beautiful things you deserve.</p>
+            
+            <p style="font-size: 12.5px; line-height: 1.7; margin-bottom: 10px; color: #555;">I want you to know how much I love you your beautiful eyes that I could never get tired of looking at your smile that makes everything feel better and all the little things that make you who you are You’re truly one of the most precious people in my life and I’m so lucky to have you by my side.</p>
+            
+            <p style="font-size: 12.5px; line-height: 1.7; margin-bottom: 10px; color: #555;">I hope I get to see you happy smiling and achieving everything you’ve ever dreamed of May this year bring you countless beautiful moments and memories.</p>
+
+            <div style="text-align: center; font-style: italic; font-size: 14px; color: #e91e63; font-weight: 700; margin-top: 15px;">
+                I will always love you ♡
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <button class="return-btn" onclick="showScreen('menuScreen')">RETURN</button>
+            <div class="music-btn" id="musicBtn5" onclick="toggleMusic()">🎶</div>
+        </div>
+    </div>
+</div>
+
+<!-- Embedded Audio Direct Link -->
+<audio id="bgSong" src="https://files.catbox.moe/3izyf8.mov" loop></audio>
+
+<script>
+    let enteredCode = "";
+    const correctCode = "1211";
+
+    function pressKey(num) {
+        if (enteredCode.length < 4) {
+            enteredCode += num;
+            updateDisplay();
+        }
+        if (enteredCode.length === 4) {
+            setTimeout(checkCode, 150);
+        }
+    }
+
+    function clearCode() {
+        enteredCode = "";
+        updateDisplay();
+        document.getElementById('errorMsg').textContent = "";
+    }
+
+    function updateDisplay() {
+        for (let i = 1; i <= 4; i++) {
+            let dot = document.getElementById('d' + i);
+            if (i <= enteredCode.length) {
+                dot.textContent = "•";
+            } else {
+                dot.textContent = "";
+            }
+        }
+    }
+
+    function checkCode() {
+        if (enteredCode === correctCode) {
+            showScreen('menuScreen');
+        } else {
+            document.getElementById('errorMsg').textContent = "Wrong Passcode! Try 1211 🤍";
+            setTimeout(() => {
+                enteredCode = "";
+                updateDisplay();
+            }, 800);
+        }
+    }
+
+    function showScreen(screenId) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById(screenId).classList.add('active');
+        enteredCode = "";
+        updateDisplay();
+    }
+
+    function toggleMusic() {
+        const audio = document.getElementById('bgSong');
+        const buttons = document.querySelectorAll('.music-btn');
+        if (audio.paused) {
+            audio.play().catch(e => console.log("Audio play allowed on user interaction"));
+            buttons.forEach(btn => btn.classList.add('playing'));
+        } else {
+            audio.pause();
+            buttons.forEach(btn => btn.classList.remove('playing'));
+        }
+    }
+</script>
+
+</body>
+</html>
